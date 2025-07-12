@@ -1,0 +1,12 @@
+[Unit]
+Description=My WebApp
+After=network.target
+
+[Service]
+User={{ ansible_user }}
+WorkingDirectory=/home/{{ ansible_user }}/mywebapp
+ExecStart=/usr/bin/python3 /home/{{ ansible_user }}/mywebapp/app/app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

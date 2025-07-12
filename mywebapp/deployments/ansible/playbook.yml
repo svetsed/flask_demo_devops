@@ -1,0 +1,33 @@
+- hosts: webservers
+  become: yes
+  vars:
+    app_name: "mywebapp"
+
+  tasks:
+    - name: Install Python, Git and Flask (Ubuntu package)
+      apt:
+        name: ["python3", "git", "python3-flask"]
+        state: present
+
+    - name: Copy systemd service
+      template:
+        src: "templates/{{ app_name }}.service.j2"
+        dest: "/etc/systemd/system/{{ app_name }}.service"
+      notify:
+        - reload systemd
+        - restart {{ app_name }}
+
+    - name: Start service
+      systemd:
+        name: "{{ app_name }}"
+        state: started
+        enabled: yes
+  handlers:
+    - name: reload systemd
+      command: systemctl daemon-reload
+      listen: "restart {{ app_name }}"
+
+    - name: restart {{ app_name }}
+      systemd:
+        name: "{{ app_name }}"
+        state: restarted
