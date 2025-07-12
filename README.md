@@ -45,7 +45,7 @@ ansible-playbook -i inventory.ini playbook.yml --ask-become-pass
 ```
 sudo systemctl status mywebapp
 ```
-Должен быть активен и гореть зелёным.
+*Должен быть активен и гореть зелёным.*
 
 Другие команды для сервиса:
 ```
@@ -53,6 +53,7 @@ sudo systemctl daemon-reload  # перезапуск службы (необхо�
 sudo systemctl start mywebapp # запуск сервиса
 sudo systemctl stop mywebapp  # остановка
 ```
+
 5. Откройте приложение
 ```
 http://ваш_ip_тут:5000/
@@ -63,7 +64,9 @@ http://ваш_ip_тут:5000/
 ```
 sudo nano flask-docker-manager.sh
 ```
+
 *Не забудьте сохранить и выйти! В nano это Ctrl + O -> Enter -> Ctrl + X*
+
 2. Дайте права на запуск
 ```
 sudo chmod +x flask-docker-manager.sh
@@ -72,15 +75,19 @@ sudo chmod +x flask-docker-manager.sh
 ```
 sudo ./flask-docker-manager.sh [команда]
 ```
+
 Доступные команды:
-./flask-docker-manager.sh [build|start|stop|restart|logs|check|clean]
+./flask-docker-manager.sh [ build | start | stop | restart | logs | check | clean ]
+
 
 4. Для запуска  build -> затем start
 ```
 sudo ./flask-docker-manager.sh build
 sudo ./flask-docker-manager.sh start
 ```
+
 *Будет здесь: http://127.0.0.1:5001/*
+
 5. После работы остановите контейнер и удалите его
 ```
 sudo ./flask-docker-manager.sh stop
