@@ -26,7 +26,6 @@
 │   └── docker/
 │       ├── Dockerfile        # Docker конфигурация
 │       └── flask-docker-manager.sh  # Скрипт управления (тут изменить данные)
-├── README.md                # Документация
 
 ```
 
